@@ -11,8 +11,9 @@ namespace CarrinhoDeCompras.Domain
     {
         public int ExibirMenuCliente()
         {
-
-            Console.WriteLine("----Menu Cliente----");
+            while (true)
+            {
+            Console.WriteLine("----Menu Cliente----\n");
             Console.WriteLine("Selecione uma opção:");
 
             Console.WriteLine("1 - Voltar ao menu principal");
@@ -25,38 +26,52 @@ namespace CarrinhoDeCompras.Domain
 
             int opcaoCliente = EntradaHelper.LerNumero("Digite uma opção: ");
 
-            while (opcaoCliente < 1 || opcaoCliente > 7)
-            {
+             if (opcaoCliente < 1 || opcaoCliente > 7)
+                 {
                 Console.WriteLine("Opção inválida. Tente novamente.");
-                opcaoCliente = EntradaHelper.LerNumero("Digite uma opção: ");
+                continue; 
+                 }
+
+                    switch (opcaoCliente)
+                    {
+                        case 1:
+                            Console.WriteLine("Voltando ao menu principal...");
+                            return opcaoCliente;
+                       
+                        case 2:
+                            Console.WriteLine("Exibindo produtos disponíveis...");
+                            var estoque = new Estoque();
+                            estoque.ListarProdutos();
+                            break;
+                        case 3:
+                            Console.WriteLine("Adicionando produto ao carrinho...");
+                            var addCarrinho = new Carrinho();  
+                            addCarrinho.AdicionarAoCarrinho();
+                        break;
+
+                        case 4:
+                            Console.WriteLine("Exibindo carrinho de compras...");
+                            var exibirCarrinho = new Carrinho();
+                            exibirCarrinho.ExibirCarrinho();
+ 
+                        break;
+
+                        case 5:
+                            Console.WriteLine("Removendo produto do carrinho...");
+                            var removerCarrinho = new Carrinho();
+                            removerCarrinho.RemoverDoCarrinho();
+                        break;
+
+                        case 6:
+                            Console.WriteLine("Finalizando compra...");
+                            break;
+                        case 7:
+                            Console.WriteLine("Saindo do sistema...");
+                            Environment.Exit(0);
+                            break;
+
+                }
             }
-            switch (opcaoCliente)
-            {
-
-                case 2:
-                    Console.WriteLine("Exibindo produtos disponíveis...");
-                    
-                    break;
-                case 3:
-                    Console.WriteLine("Adicionando produto ao carrinho...");
-                   
-                    break;
-                case 4:
-                    Console.WriteLine("Exibindo carrinho de compras...");
-                   
-                    break;
-                case 5:
-                    Console.WriteLine("Removendo produto do carrinho...");
-                    
-                    break;
-                case 6:
-                    Console.WriteLine("Finalizando compra...");
-                   
-                    break;
-
-            }
-
-            return opcaoCliente;
 
         }
     }

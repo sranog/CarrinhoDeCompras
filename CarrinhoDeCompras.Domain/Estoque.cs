@@ -9,6 +9,13 @@ namespace CarrinhoDeCompras.Domain
     public class Estoque
     {
         private List<Produto> produtos = new List<Produto>();
+         public Estoque()
+          {
+                // Inicializando com alguns produtos de exemplo
+                produtos.Add(new Produto("Produto A", 10, 19.99, "A001"));
+                produtos.Add(new Produto("Produto B", 5, 29.99, "B002"));
+                produtos.Add(new Produto("Produto C", 20, 9.99, "C003"));
+        }
 
         public void ListarProdutos()
         {

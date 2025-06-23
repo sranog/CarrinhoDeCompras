@@ -18,21 +18,13 @@ public class Program
                 case 1:
                     {
                         var menuCliente = new MenuCliente();
-                        int  opcaoCliente = menuCliente.ExibirMenuCliente();
-
-                        if (opcaoCliente == 1)
-                        {
-                            continue;
-                        }
-                        else if (opcaoCliente == 7)
-                        {
-                            Console.WriteLine("Saindo...");
-                            return;
-                        }
-                    }break;
+                        menuCliente.ExibirMenuCliente();
+                        break;
+                    }
                 case 2:
-                    { 
-                        Console.WriteLine("Opção de administrador ainda não implementada.");
+                    {
+                        var menuAdmin = new MenuAdmin();
+                        menuAdmin.ExibirMenuAdmin();
                         break;
                     }
                 case 3:
