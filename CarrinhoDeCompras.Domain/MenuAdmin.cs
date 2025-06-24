@@ -46,11 +46,17 @@ namespace CarrinhoDeCompras.Domain
                             break;
                         }
                     case 3:
-                        {                            
-                                int indice = EntradaHelper.LerNumero("Digite o índice do produto: ");
-                                int quantidade = EntradaHelper.LerNumero("Digite a quantidade a ser adicionada: ");
-                                estoque.AdicionarQuantidade(indice, quantidade);
+                        {
+                            int indice = EntradaHelper.LerNumero("Digite o índice do produto: ");
+                            int quantidade = EntradaHelper.LerNumero("Digite a quantidade a ser adicionada: ");
+                            estoque.AdicionarQuantidade(indice, quantidade);
 
+                            break;
+                        }
+                    case 6:
+                        {
+                            Console.WriteLine("Cadastrando produto...");
+                            estoque.CadastrarProduto();
                             break;
                         }
                     case 7:

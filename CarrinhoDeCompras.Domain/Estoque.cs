@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarrinhoDeCompras.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,19 @@ namespace CarrinhoDeCompras.Domain
             {
                 Console.WriteLine("Quantidade  inválida. Tente  novamente.");
             }
+        }
+        public void CadastrarProduto()
+        {
+            Console.WriteLine("Digite o nome do produto:");
+            string nome = Console.ReadLine();
+            int quantidade = EntradaHelper.LerNumero("Digite a quantidade do produto: ");
+            double preco = EntradaHelper.LerNumero("Digite o preço do produto: ");
+            Console.WriteLine("Digite o código do produto:");
+            string codigo = Console.ReadLine();
+
+            produtos.Add(new Produto(nome, quantidade, preco, codigo));
+
+            Console.WriteLine($"Produto cadastrado: {nome}, Quantidade: {quantidade}, Preço: {preco:F2}, Código: {codigo}");    
         }
 
         public List<Produto> ObterProdutosDisponiveis()
