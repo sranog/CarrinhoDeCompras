@@ -55,5 +55,10 @@ namespace CarrinhoDeCompras.Domain
                 Console.WriteLine("Quantidade  inválida. Tente  novamente.");
             }
         }
+
+        public List<Produto> ObterProdutosDisponiveis()
+        {
+            return produtos.Where(p => p.Quantidade > 0).ToList();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,12 +47,16 @@ namespace CarrinhoDeCompras.Domain
                         }
                     case 3:
                         {                            
-                            Console.WriteLine("Adicionando produto...");
-
                                 int indice = EntradaHelper.LerNumero("Digite o índice do produto: ");
                                 int quantidade = EntradaHelper.LerNumero("Digite a quantidade a ser adicionada: ");
                                 estoque.AdicionarQuantidade(indice, quantidade);
 
+                            break;
+                        }
+                    case 7:
+                        {
+                            Console.WriteLine("Saindo do sistema...");
+                            Environment.Exit(0);
                             break;
                         }
 

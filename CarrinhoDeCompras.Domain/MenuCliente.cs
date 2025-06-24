@@ -47,26 +47,21 @@ namespace CarrinhoDeCompras.Domain
                        
                         case 2:
                             Console.WriteLine("Exibindo produtos disponíveis...");
-                            var estoque = new Estoque();
                             estoque.ListarProdutosCliente();
                             break;
                         case 3:
-                            Console.WriteLine("Adicionando produto ao carrinho...");
-                            var addCarrinho = new Carrinho();  
-                            addCarrinho.AdicionarAoCarrinho();
+                            Console.WriteLine("Adicionando produto ao carrinho..."); 
+                            carrinho.AdicionarAoCarrinho();
                         break;
 
                         case 4:
                             Console.WriteLine("Exibindo carrinho de compras...");
-                            var exibirCarrinho = new Carrinho();
-                            exibirCarrinho.ExibirCarrinho();
- 
+                            carrinho.ExibirCarrinho();
                         break;
 
                         case 5:
                             Console.WriteLine("Removendo produto do carrinho...");
-                            var removerCarrinho = new Carrinho();
-                            removerCarrinho.RemoverDoCarrinho();
+                            carrinho.RemoverDoCarrinho();
                         break;
 
                         case 6:
