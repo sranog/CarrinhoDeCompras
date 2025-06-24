@@ -9,6 +9,13 @@ namespace CarrinhoDeCompras.Domain
 {
     public class MenuCliente
     {
+        private Estoque estoque;
+        private Carrinho carrinho;
+        public MenuCliente(Estoque estoqueExistente, Carrinho carrinhoExistente)
+        {
+            estoque = estoqueExistente;
+            carrinho = carrinhoExistente;
+        }
         public int ExibirMenuCliente()
         {
             while (true)
@@ -41,7 +48,7 @@ namespace CarrinhoDeCompras.Domain
                         case 2:
                             Console.WriteLine("Exibindo produtos disponíveis...");
                             var estoque = new Estoque();
-                            estoque.ListarProdutos();
+                            estoque.ListarProdutosCliente();
                             break;
                         case 3:
                             Console.WriteLine("Adicionando produto ao carrinho...");

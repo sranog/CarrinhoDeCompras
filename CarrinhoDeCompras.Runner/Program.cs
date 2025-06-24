@@ -7,8 +7,15 @@ public class Program
 {
     public static void Main()
     {
+        // Criando instâncias de Estoque, menuAdmin e menuCliente e  carrinho de compras
+        Estoque estoque = new Estoque();
+        MenuAdmin menuAdmin = new MenuAdmin(estoque);
+        Carrinho carrinho = new Carrinho();
+        MenuCliente menuCliente = new MenuCliente(estoque,carrinho);
+
         while (true)
         {
+            
             Console.WriteLine("Bem vindo!\n");
             var menu = new MenuPrincipal();
             int entrada = menu.ExibirMenu();
@@ -17,13 +24,12 @@ public class Program
             {
                 case 1:
                     {
-                        var menuCliente = new MenuCliente();
                         menuCliente.ExibirMenuCliente();
                         break;
                     }
                 case 2:
                     {
-                        var menuAdmin = new MenuAdmin();
+                        
                         menuAdmin.ExibirMenuAdmin();
                         break;
                     }
