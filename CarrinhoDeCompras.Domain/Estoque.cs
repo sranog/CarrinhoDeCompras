@@ -1,7 +1,9 @@
 ﻿using CarrinhoDeCompras.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +19,12 @@ namespace CarrinhoDeCompras.Domain
                 produtos.Add(new Produto("Produto B", 5, 29.99, "B002"));
                 produtos.Add(new Produto("Produto C", 20, 9.99, "C003"));
         }
+        public List<Produto> ObterProdutosDisponiveis()
+        {
+            return produtos.Where(p => p.Quantidade > 0).ToList();
+        }
 
+        //  Futuramente iriei criar o metodo de entradaa  para   adm e cliente
         public void ListarProdutosCliente()
         {
             Console.WriteLine("Lista de Produtos:\n");
@@ -56,8 +63,57 @@ namespace CarrinhoDeCompras.Domain
                 Console.WriteLine("Quantidade  inválida. Tente  novamente.");
             }
         }
+        public void RemoverQuantidade(int indice, int quantidade)
+        {
+
+            while (true)
+            {
+                if (indice >= 0 && indice < produtos.Count)
+                {
+                    if (produtos[indice].Quantidade <= 0)
+                    {
+
+                        Console.WriteLine("Produto não possui quantidade suficiente para remoção. Tente novamente.");
+                        indice = EntradaHelper.LerNumero("Digite o indice a ser removida: ");
+                        continue;
+                    }
+                    Console.WriteLine($"Produto selecionado: {produtos[indice].Nome} Quantidade: {produtos[indice].Quantidade}");
+                    break; // índice válido e produto disponível
+                }
+                else
+                {
+                    Console.WriteLine("Índice inválido. Tente novamente.");
+                    indice = EntradaHelper.LerNumero("Digite o índice do produto: ");
+                }
+            }
+                    while (true)
+                {
+                    quantidade = EntradaHelper.LerNumero("Digite a quantidade a ser removida: ");
+
+                        if (produtos[indice].Quantidade >= quantidade)
+                        {
+
+                            produtos[indice].Quantidade -= quantidade;
+                            Console.WriteLine($"Quantidade atualizada: {produtos[indice].Nome} Quantidade: {produtos[indice].Quantidade}");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Não é  possivel  remover mais do que o produto possui. Tente novamente.");
+                            quantidade = EntradaHelper.LerNumero("Digite a quantidade a ser removida: ");
+                        }
+                    }
+                }
+            
+        
+        public void RemoverProduto()
+        {
+
+        }
+
         public void CadastrarProduto()
         {
+            // futuramente irei criar as validações para os campos de entrada
             Console.WriteLine("Digite o nome do produto:");
             string nome = Console.ReadLine();
             int quantidade = EntradaHelper.LerNumero("Digite a quantidade do produto: ");
@@ -67,12 +123,7 @@ namespace CarrinhoDeCompras.Domain
 
             produtos.Add(new Produto(nome, quantidade, preco, codigo));
 
-            Console.WriteLine($"Produto cadastrado: {nome}, Quantidade: {quantidade}, Preço: {preco:F2}, Código: {codigo}");    
-        }
-
-        public List<Produto> ObterProdutosDisponiveis()
-        {
-            return produtos.Where(p => p.Quantidade > 0).ToList();
+            Console.WriteLine($"Produto cadastrado: {nome}, Quantidade: {quantidade}, Preço: {preco:F2}, Código: {codigo}");
         }
     }
 }

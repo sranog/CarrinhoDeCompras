@@ -24,13 +24,21 @@ namespace CarrinhoDeCompras.Domain
                 Console.WriteLine("1 - Voltar ao menu principal");
                 Console.WriteLine("2 - Listar todos os produtos");
                 Console.WriteLine("3 - Adicionar quantidade ao produto");
-                Console.WriteLine("4 - Remover produto");
-                Console.WriteLine("5 - Editar produto");
-                Console.WriteLine("6 - Cadastrar produto");
-                Console.WriteLine("7 - Sair");
+                Console.WriteLine("4 - Remover quantidade do produto");
+                Console.WriteLine("5 - Remover produto");
+                Console.WriteLine("6 - Alterar o nome do produto");
+                Console.WriteLine("7 - Alterar preço do produto");
+                Console.WriteLine("8 - Cadastrar produto");
+                Console.WriteLine("9 - Sair");
+                /* Console.WriteLine(" - Editar produto");*/
 
                 int opcaoAdmin = EntradaHelper.LerNumero("Digite uma opção: ");
 
+                if (opcaoAdmin < 1 || opcaoAdmin > 9)
+                {
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    continue;
+                }
                 switch (opcaoAdmin)
                 {
                     case 1:
@@ -47,19 +55,37 @@ namespace CarrinhoDeCompras.Domain
                         }
                     case 3:
                         {
+                            // futuramente irei criar outro  metodo paraa que os metodos de entradas fiquem dentro da classe estoque
+                            estoque.ListarProdutosAdm();
+
                             int indice = EntradaHelper.LerNumero("Digite o índice do produto: ");
                             int quantidade = EntradaHelper.LerNumero("Digite a quantidade a ser adicionada: ");
                             estoque.AdicionarQuantidade(indice, quantidade);
 
                             break;
                         }
-                    case 6:
+                    case 4:
+                        {
+                            // futuramente irei criar outro  metodo paraa que os metodos de entradas fiquem dentro da classe estoque
+                            estoque.ListarProdutosAdm();
+
+                            int indice = EntradaHelper.LerNumero("Digite o índice do produto: ");
+                            int quantidade = EntradaHelper.LerNumero("Digite a quantidade a ser removida: ");
+                            estoque.RemoverQuantidade(indice, quantidade);
+
+                            break;
+                        }
+                    case 5:
+                        {
+                            break;
+                        }
+                    case 8:
                         {
                             Console.WriteLine("Cadastrando produto...");
                             estoque.CadastrarProduto();
                             break;
                         }
-                    case 7:
+                    case 9:
                         {
                             Console.WriteLine("Saindo do sistema...");
                             Environment.Exit(0);
