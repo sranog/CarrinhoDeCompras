@@ -17,38 +17,17 @@ namespace CarrinhoDeCompras.Domain
         public void AdicionarAoCarrinho()
         {
             Console.WriteLine("Adicionando produto ao carrinho...\n");
-
-            for (int i = 0; i < produtosCarrinho.Count; i++)
-            {
-                Console.WriteLine($"[{i}]\t{produtosCarrinho[i].Nome}\t\t{produtosCarrinho[i].Preco:F2}\t{produtosCarrinho[i].Quantidade}\t{produtosCarrinho[i].Codigo}");
-            }
-
-            int indice;
-            while (true)
-            {
-                Console.WriteLine("\nDigite o número do produto para adicionar:");
-                int entrada = EntradaHelper.LerNumero("Digite uma opção:  ");
-
-                if (entrada  >= 0 && entrada < produtosCarrinho.Count)
-                {
-                    indice = entrada;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Digite um número válido");
-                }
-            }
-
+            // implementar a lógica para adicionar um produto ao carrinho
         }
 
         public void ExibirCarrinho()
         {
             Console.WriteLine("Exibindo carrinho de compras...\n");
-         
+            // implementar a lógica para exibir os produtos no carrinho
+
 
         }
-       
+
         public void RemoverDoCarrinho()
         {
             Console.WriteLine("Removendo produto do carrinho...\n");

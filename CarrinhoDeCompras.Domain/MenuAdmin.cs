@@ -77,6 +77,8 @@ namespace CarrinhoDeCompras.Domain
                         }
                     case 5:
                         {
+                            int indice = EntradaHelper.LerNumero("Digite o índice do produto a ser removido: ");
+                            estoque.RemoverProduto(indice);
                             break;
                         }
                     case 8:

@@ -106,8 +106,18 @@ namespace CarrinhoDeCompras.Domain
                 }
             
         
-        public void RemoverProduto()
+        public void RemoverProduto(int indice)
         {
+            
+            if (indice >= 0 && indice < produtos.Count)
+            {
+                Console.WriteLine($"Produto removido: {produtos[indice].Nome}");
+                produtos.RemoveAt(indice);
+            }
+            else
+            {
+                Console.WriteLine("Índice inválido. Tente novamente.");
+            }
 
         }
 
